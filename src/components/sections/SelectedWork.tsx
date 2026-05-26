@@ -10,6 +10,11 @@ const slideVariants = {
   exit: (dir: number) => ({ x: dir > 0 ? "-6%" : "6%", opacity: 0 }),
 };
 
+// Framer Motion idiomatic swipe detection: combine drag offset & flick velocity
+const SWIPE_THRESHOLD = 10000;
+const swipePower = (offset: number, velocity: number) =>
+  Math.abs(offset) * velocity;
+
 const categoryColor: Record<string, string> = {
   "Web & Backend": "#3b82f6",
   "Mobile & Multimedia": "#f59e0b",
@@ -51,7 +56,7 @@ export default function SelectedWork() {
         </div>
 
         {/* Carousel card */}
-        <div className="relative rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-card)]" style={{ height: 600 }}>
+        <div className="relative rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-card)] h-[480px] md:h-[600px]">
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div
               key={p.id}
@@ -61,28 +66,37 @@ export default function SelectedWork() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.4, ease: [0.32, 0, 0.67, 0] }}
-              className="absolute inset-0 grid md:grid-cols-[1fr_380px]"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.15}
+              onDragEnd={(_, { offset, velocity }) => {
+                const swipe = swipePower(offset.x, velocity.x);
+                if (swipe < -SWIPE_THRESHOLD) next();
+                else if (swipe > SWIPE_THRESHOLD) prev();
+              }}
+              style={{ touchAction: "pan-y" }}
+              className="absolute inset-0 grid md:grid-cols-[1fr_380px] cursor-grab active:cursor-grabbing"
             >
-              {/* Left: project info */}
-              <div className="p-8 md:p-12 flex flex-col">
-                <div className="flex items-center gap-5 mb-6">
+              {/* Left: project info — scrollable on mobile if content too tall */}
+              <div className="p-5 md:p-12 flex flex-col overflow-y-auto md:overflow-y-visible">
+                <div className="flex items-center gap-4 md:gap-5 mb-3 md:mb-6">
                   <span
                     className="inline-block h-2 w-2 rounded-full shrink-0"
                     style={{ background: accent }}
                   />
-                  <span className="text-sm text-[var(--color-muted)]">{p.client}</span>
+                  <span className="text-xs md:text-sm text-[var(--color-muted)]">{p.client}</span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-semibold leading-snug tracking-tight mb-4 text-balance">
+                <h3 className="text-lg md:text-3xl font-semibold leading-snug tracking-tight mb-2 md:mb-4 text-balance">
                   {p.title}
                 </h3>
-                <p className="text-[15px] text-[var(--color-muted)] leading-relaxed mb-6">
+                <p className="text-[13px] md:text-[15px] text-[var(--color-muted)] leading-relaxed mb-3 md:mb-6">
                   {p.summary}
                 </p>
-                <ul className="space-y-2 mb-6 flex-1">
+                <ul className="space-y-1.5 md:space-y-2 mb-3 md:mb-6 flex-1">
                   {p.highlights.map((h) => (
-                    <li key={h} className="flex gap-3 text-[14px] text-[var(--color-fg)]/85 leading-relaxed">
+                    <li key={h} className="flex gap-2.5 md:gap-3 text-[13px] md:text-[14px] text-[var(--color-fg)]/85 leading-relaxed">
                       <span
-                        className="mt-2 size-1.5 rounded-full shrink-0"
+                        className="mt-1.5 md:mt-2 size-1.5 rounded-full shrink-0"
                         style={{ background: accent }}
                       />
                       {h}
@@ -91,17 +105,17 @@ export default function SelectedWork() {
                 </ul>
                 {p.metric && (
                   <div
-                    className="text-sm font-medium mb-5 pl-4 border-l-2 py-1"
+                    className="text-xs md:text-sm font-medium mb-3 md:mb-5 pl-3 md:pl-4 border-l-2 py-0.5 md:py-1"
                     style={{ borderColor: accent, color: "var(--color-fg)" }}
                   >
                     {p.metric}
                   </div>
                 )}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[var(--color-border)]">
+                <div className="flex flex-wrap gap-1.5 pt-3 md:pt-4 border-t border-[var(--color-border)]">
                   {p.stack.map((s) => (
                     <span
                       key={s}
-                      className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--color-bg)] text-[var(--color-muted)]"
+                      className="text-[10px] md:text-xs font-mono px-2 py-0.5 rounded bg-[var(--color-bg)] text-[var(--color-muted)]"
                     >
                       {s}
                     </span>
@@ -118,7 +132,6 @@ export default function SelectedWork() {
                     aria-hidden
                     className="absolute inset-0 w-full h-full object-cover object-center select-none pointer-events-none"
                   />
-                  <div className="absolute inset-0 bg-black/20" />
                 </div>
               )}
             </motion.div>

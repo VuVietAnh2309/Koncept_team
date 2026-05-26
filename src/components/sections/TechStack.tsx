@@ -33,7 +33,7 @@ export default function TechStack() {
           {stack.map((s) => (
             <div
               key={s.name}
-              className="bg-[var(--color-bg)] p-6 flex flex-col gap-1 hover:bg-[var(--color-card)] transition-colors"
+              className="bg-[var(--color-bg)] p-4 md:p-6 flex flex-col gap-1 hover:bg-[var(--color-card)] transition-colors"
             >
               <div className="text-lg md:text-xl font-semibold tracking-tight">
                 {s.name}

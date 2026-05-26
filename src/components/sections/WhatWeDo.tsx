@@ -188,10 +188,10 @@ export default function WhatWeDo() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="group relative bg-white rounded-2xl border border-[var(--color-border)] p-8 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              className="group relative bg-white rounded-2xl border border-[var(--color-border)] p-6 md:p-8 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
             >
-              {/* Illustration — top right */}
-              <div className="absolute top-4 right-4 w-28 h-20 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Illustration — top right (hidden on mobile to give text full width) */}
+              <div className="hidden sm:block absolute top-4 right-4 w-28 h-20 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                 {s.illustration}
               </div>
 
@@ -204,10 +204,10 @@ export default function WhatWeDo() {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-semibold mb-3 max-w-[60%]">{s.title}</h3>
+              <h3 className="text-xl font-semibold mb-3 sm:max-w-[60%]">{s.title}</h3>
 
               {/* Desc */}
-              <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-6 max-w-[65%]">
+              <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-6 sm:max-w-[65%]">
                 {s.desc}
               </p>
 

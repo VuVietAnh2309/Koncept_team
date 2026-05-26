@@ -109,7 +109,7 @@ const trustedBy = ["Samsung R&D", "Viettel", "Prep Education", "FPT IS", "Tokyo 
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-[#0d0d0d]" style={{ height: "100svh", minHeight: 600 }}>
+    <section id="top" className="relative overflow-hidden bg-[#0d0d0d]" style={{ height: "100svh", minHeight: 480 }}>
 
       {/* Background photo — full bleed */}
       <div className="absolute inset-0 z-0">
@@ -136,8 +136,8 @@ export default function Hero() {
       <div className="absolute bottom-0 inset-x-0 z-20 border-t border-white/10 bg-black/40 backdrop-blur-sm overflow-hidden">
         <div className="flex items-center h-12">
           {/* Label cố định */}
-          <div className="shrink-0 px-6 border-r border-white/15 h-full flex items-center">
-            <span className="text-xs font-medium text-white/40 uppercase tracking-widest whitespace-nowrap">
+          <div className="shrink-0 px-3 md:px-6 border-r border-white/15 h-full flex items-center">
+            <span className="text-[10px] md:text-xs font-medium text-white/40 uppercase tracking-widest whitespace-nowrap">
               Our team previously at
             </span>
           </div>

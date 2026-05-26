@@ -135,6 +135,10 @@ const variants = {
   exit: (dir: number) => ({ x: dir > 0 ? -40 : 40, opacity: 0 }),
 };
 
+const SWIPE_THRESHOLD = 10000;
+const swipePower = (offset: number, velocity: number) =>
+  Math.abs(offset) * velocity;
+
 export default function About() {
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState(1);
@@ -143,6 +147,9 @@ export default function About() {
     setDir(idx > current ? 1 : -1);
     setCurrent(idx);
   };
+
+  const next = () => goTo((current + 1) % PANELS.length);
+  const prev = () => goTo((current - 1 + PANELS.length) % PANELS.length);
 
   const panel = PANELS[current];
 
@@ -157,7 +164,7 @@ export default function About() {
         </div>
 
         {/* Panel content — fixed height bằng panel lớn nhất */}
-        <div className="relative" style={{ minHeight: 360 }}>
+        <div className="relative min-h-[640px] md:min-h-[360px]">
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div
             key={panel.id}
@@ -167,7 +174,16 @@ export default function About() {
             animate="center"
             exit="exit"
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="absolute inset-0 grid md:grid-cols-[1fr_400px] gap-12 md:gap-20 items-start"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.15}
+            onDragEnd={(_, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
+              if (swipe < -SWIPE_THRESHOLD) next();
+              else if (swipe > SWIPE_THRESHOLD) prev();
+            }}
+            style={{ touchAction: "pan-y" }}
+            className="absolute inset-0 grid md:grid-cols-[1fr_400px] gap-8 md:gap-20 items-start cursor-grab active:cursor-grabbing"
           >
             {/* Left: headline */}
             <div>
@@ -177,7 +193,7 @@ export default function About() {
                 <span className="text-sm text-[var(--color-muted)]">{panel.label}</span>
               </div>
 
-              <h2 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.03]">
+              <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.03]">
                 {panel.italic ? (
                   <>Real{" "}<span className="text-[var(--color-fg)]">Impact.</span></>
                 ) : (
@@ -224,7 +240,7 @@ export default function About() {
               {panel.extra === "stats" && (
                 <div className="grid grid-cols-3 gap-4 pt-2 border-t border-[var(--color-border)]">
                   {[
-                    { n: "7", label: "dự án đã ship" },
+                    { n: "8", label: "dự án đã ship" },
                     { n: "4", label: "kỹ sư" },
                     { n: "3+", label: "năm kinh nghiệm" },
                   ].map((s) => (

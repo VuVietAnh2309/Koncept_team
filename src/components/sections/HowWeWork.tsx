@@ -63,16 +63,16 @@ export default function HowWeWork() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           style={{ perspective: "1400px" }}
         >
-          {/* Outer tilt container */}
+          {/* Outer tilt container — disable 3D tilt on mobile (looks weird on narrow screen) */}
           <div
+            className="md:[transform:rotateX(6deg)]"
             style={{
-              transform: "rotateX(6deg)",
               transformOrigin: "bottom center",
               transformStyle: "preserve-3d",
             }}
           >
-            {/* Glow dots row */}
-            <div className="grid grid-cols-4 mb-0">
+            {/* Glow dots row — only show on md+ where they actually align with cells */}
+            <div className="hidden md:grid grid-cols-4 mb-0">
               {steps.map((s, idx) => (
                 <div key={s.n} className="flex justify-start px-8 md:px-10">
                   <div className="relative">
@@ -110,9 +110,10 @@ export default function HowWeWork() {
                     key={s.n}
                     onMouseEnter={() => setActive(idx)}
                     onMouseLeave={() => setActive(null)}
-                    className="relative p-8 md:p-10 cursor-default transition-colors duration-200"
+                    className={`relative p-6 md:p-10 cursor-default transition-colors duration-200 ${
+                      idx < 3 ? "border-b md:border-b-0 md:border-r border-black/[0.07]" : ""
+                    }`}
                     style={{
-                      borderRight: idx < 3 ? "1px solid rgba(0,0,0,0.07)" : "none",
                       background: active === idx ? "rgba(255,255,255,0.6)" : "transparent",
                     }}
                   >
@@ -148,9 +149,9 @@ export default function HowWeWork() {
               />
             </div>
 
-            {/* Wood desk layer 1 — thicker, darker grain */}
+            {/* Wood desk layer 1 — thicker, darker grain (hidden on mobile) */}
             <div
-              className="mx-4 h-5 rounded-b-2xl"
+              className="hidden md:block mx-4 h-5 rounded-b-2xl"
               style={{
                 backgroundImage: `
                   repeating-linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.06) 1px, transparent 2px, transparent 18px),
@@ -162,9 +163,9 @@ export default function HowWeWork() {
                 borderTop: "none",
               }}
             />
-            {/* Wood desk layer 2 — slightly narrower, slightly lighter */}
+            {/* Wood desk layer 2 — slightly narrower, slightly lighter (hidden on mobile) */}
             <div
-              className="mx-8 h-3 rounded-b-xl"
+              className="hidden md:block mx-8 h-3 rounded-b-xl"
               style={{
                 backgroundImage: `
                   repeating-linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.05) 1px, transparent 2px, transparent 22px),
@@ -177,9 +178,9 @@ export default function HowWeWork() {
             />
           </div>
 
-          {/* Cast shadow from desk onto cream surface */}
+          {/* Cast shadow from desk onto cream surface (hidden on mobile) */}
           <div
-            className="mx-6 mt-1 h-6 rounded-full"
+            className="hidden md:block mx-6 mt-1 h-6 rounded-full"
             style={{
               background: "radial-gradient(ellipse, rgba(120,70,20,0.3) 0%, transparent 70%)",
               filter: "blur(10px)",
@@ -193,7 +194,7 @@ export default function HowWeWork() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-6 flex items-center justify-between px-8 py-5 rounded-2xl"
+          className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 sm:px-8 py-5 rounded-2xl"
           style={{
             background: "rgba(255,255,255,0.5)",
             border: "1px solid rgba(255,255,255,0.7)",

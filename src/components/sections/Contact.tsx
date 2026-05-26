@@ -40,7 +40,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-16 md:gap-20 items-center"
+          className="grid md:grid-cols-2 gap-10 md:gap-20 items-center"
         >
           {/* Left */}
           <div>
@@ -69,7 +69,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className="group flex items-center gap-4 px-6 py-5 rounded-2xl transition-all duration-200"
+                  className="group flex items-center gap-3 md:gap-4 px-4 md:px-6 py-4 md:py-5 rounded-2xl transition-all duration-200"
                   style={{
                     background: c.primary
                       ? "rgba(255,255,255,0.75)"
@@ -104,7 +104,7 @@ export default function Contact() {
                       {c.label}
                     </div>
                     <div
-                      className="text-sm font-medium truncate"
+                      className="text-xs md:text-sm font-medium break-words"
                       style={{ color: c.primary ? "var(--color-fg)" : "var(--color-fg)" }}
                     >
                       {c.value}
@@ -136,7 +136,7 @@ export default function Contact() {
       <div className="grid md:grid-cols-2 h-56 md:h-64 overflow-hidden">
         <div className="relative overflow-hidden">
           <img
-            src="/team-collab.jpg"
+            src="/teamwork.png"
             alt=""
             aria-hidden
             className="w-full h-full object-cover object-center"
@@ -145,7 +145,7 @@ export default function Contact() {
         </div>
         <div className="relative overflow-hidden">
           <img
-            src="/hanoi.jpg"
+            src="/teamwork_2.png"
             alt=""
             aria-hidden
             className="w-full h-full object-cover object-center"

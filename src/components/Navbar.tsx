@@ -37,12 +37,12 @@ export default function Navbar() {
             : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="container-wide flex h-20 items-center justify-between">
+        <div className="container-wide flex h-14 md:h-20 items-center justify-between">
           <a href="#top" className="flex items-center">
             <img
               src="/logo.png"
               alt="Koncept Production Team"
-              className="h-20 w-auto transition-all duration-500"
+              className="h-12 md:h-20 w-auto transition-all duration-500"
               style={{
                 filter: open
                   ? "brightness(10)"
@@ -130,7 +130,7 @@ export default function Navbar() {
             {/* Content */}
             <div className="relative z-10 w-full flex flex-col">
               <div className="h-16" />
-              <nav className="flex flex-col justify-center py-8 gap-0 flex-1 px-12 md:px-20">
+              <nav className="flex flex-col justify-center py-8 gap-0 flex-1 px-6 md:px-20">
                 {links.map((l, i) => (
                   <motion.a
                     key={l.href}
@@ -139,12 +139,12 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: -28 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 + i * 0.07, ease: "easeOut", duration: 0.4 }}
-                    className="group flex items-baseline gap-6 py-6 border-b border-white/10 hover:border-[var(--color-accent)] transition-colors"
+                    className="group flex items-baseline gap-4 md:gap-6 py-4 md:py-6 border-b border-white/10 hover:border-[var(--color-accent)] transition-colors"
                   >
                     <span className="font-mono text-xs text-white/30 w-5 shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-3xl sm:text-5xl font-semibold tracking-tight text-white group-hover:text-[var(--color-accent)] transition-colors">
+                    <span className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white group-hover:text-[var(--color-accent)] transition-colors">
                       {l.label}
                     </span>
                   </motion.a>

@@ -66,7 +66,9 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="#"
+                    href="https://github.com/VuVietAnh2309"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="GitHub"
                     className="size-8 flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors text-[var(--color-muted)]"
                   >
@@ -75,7 +77,9 @@ export default function Footer() {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/viet-anh-vu-30a268336/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="LinkedIn"
                     className="size-8 flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors text-[var(--color-muted)]"
                   >
@@ -84,7 +88,9 @@ export default function Footer() {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://web.facebook.com/Vanhbeti2309/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Facebook"
                     className="size-8 flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors text-[var(--color-muted)]"
                   >
