@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Poppins, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Be_Vietnam_Pro, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+const sans = Be_Vietnam_Pro({
   variable: "--font-sans",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "vietnamese"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${poppins.variable} ${jetbrainsMono.variable} ${serif.variable} h-full`}
+      className={`${sans.variable} ${jetbrainsMono.variable} ${serif.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

@@ -43,7 +43,7 @@ export default function HowWeWork() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
           <div>
-            <div className="text-sm text-[var(--color-accent)] mb-4 flex items-center gap-2">
+            <div className="text-base md:text-lg font-medium text-[var(--color-accent)] mb-4 flex items-center gap-2">
               <span>⑤ Quy trình làm việc</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[var(--color-fg)] max-w-sm text-balance">

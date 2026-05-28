@@ -47,13 +47,13 @@ export default function Footer() {
             </div>
 
             {/* Col 4: Liên hệ */}
-            <div>
+            <div className="col-span-2 md:col-span-1">
               <div className="font-semibold text-xs tracking-widest uppercase text-[var(--color-accent)] mb-4">
                 Liên hệ
               </div>
               <ul className="space-y-2.5 text-[var(--color-muted)]">
                 <li>
-                  <a href="mailto:vietanhresearcher@gmail.com" className="hover:text-[var(--color-accent)] transition-colors break-all">
+                  <a href="mailto:vietanhresearcher@gmail.com" className="hover:text-[var(--color-accent)] transition-colors break-words">
                     vietanhresearcher@gmail.com
                   </a>
                 </li>

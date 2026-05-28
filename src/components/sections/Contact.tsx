@@ -44,7 +44,7 @@ export default function Contact() {
         >
           {/* Left */}
           <div>
-            <div className="text-sm text-[var(--color-accent)] mb-6 flex items-center gap-2">
+            <div className="text-base md:text-lg font-medium text-[var(--color-accent)] mb-6 flex items-center gap-2">
               <span>⑥ Liên hệ</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.08] text-balance text-[var(--color-fg)]">
@@ -121,7 +121,7 @@ export default function Contact() {
               );
 
               return c.href ? (
-                <a key={c.label} href={c.href}>
+                <a key={c.label} href={c.href} className="block">
                   {Inner}
                 </a>
               ) : (

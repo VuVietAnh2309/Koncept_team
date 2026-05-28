@@ -136,7 +136,7 @@ export default function Team() {
       <div className="container-wide relative z-10">
         {/* Header */}
         <div className="mb-10">
-          <div className="text-sm text-[var(--color-accent)] mb-5">④ Thành viên</div>
+          <div className="text-base md:text-lg font-medium text-[var(--color-accent)] mb-5">④ Thành viên</div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight max-w-xl text-balance">
               Đội ngũ chuyên sâu, làm chủ mọi mảnh ghép công nghệ.

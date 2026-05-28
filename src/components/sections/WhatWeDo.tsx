@@ -169,7 +169,7 @@ export default function WhatWeDo() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
-            <div className="text-sm text-[var(--color-accent)] mb-3">③ Dịch vụ</div>
+            <div className="text-base md:text-lg font-medium text-[var(--color-accent)] mb-3">③ Dịch vụ</div>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight max-w-xl text-balance">
               Bốn mảng chính, một team xuyên suốt.
             </h2>

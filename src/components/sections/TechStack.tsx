@@ -17,7 +17,7 @@ export default function TechStack() {
       <div className="container-wide">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <div className="text-sm text-[var(--color-accent)] mb-3">
+            <div className="text-base md:text-lg font-medium text-[var(--color-accent)] mb-3">
               ③ Công nghệ chúng tôi dùng
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight max-w-2xl text-balance">

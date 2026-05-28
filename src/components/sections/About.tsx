@@ -159,7 +159,7 @@ export default function About() {
       <div className="container-wide pt-12 pb-8 relative z-10">
 
         {/* Section label */}
-        <div className="text-sm text-[var(--color-accent)] mb-10">
+        <div className="text-base md:text-lg font-medium text-[var(--color-accent)] mb-10">
           ① Về chúng tôi
         </div>
 

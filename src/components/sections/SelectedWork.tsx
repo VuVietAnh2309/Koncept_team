@@ -48,7 +48,7 @@ export default function SelectedWork() {
         {/* Header */}
         <div className="flex items-end justify-between gap-6 mb-10">
           <div>
-            <div className="text-sm text-[var(--color-accent)] mb-3">② Dự án</div>
+            <div className="text-base md:text-lg font-medium text-[var(--color-accent)] mb-3">② Dự án</div>
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight max-w-xl text-balance">
               Từ web platform tới hệ AI chạy production.
             </h2>
@@ -139,11 +139,11 @@ export default function SelectedWork() {
         </div>
 
         {/* Navigation: dots + note */}
-        <div className="mt-6 flex items-center justify-between gap-6">
+        <div className="mt-6 flex items-center justify-center md:justify-between gap-6">
           <p className="text-xs italic text-[var(--color-muted)] hidden md:block">
             Một vài dự án có ràng buộc bảo mật, mô tả chỉ ở mức cho phép.
           </p>
-          <div className="flex items-center gap-5 ml-auto">
+          <div className="flex items-center gap-5 md:ml-auto">
             {projects.map((_, i) => (
               <button
                 key={i}
