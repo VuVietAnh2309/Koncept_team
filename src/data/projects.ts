@@ -63,7 +63,7 @@ export const projects: Project[] = [
     stack: ["Kotlin", "Java", "C++/NDK", "Android Native", "Jetpack Compose"],
     member: "damvietanh",
     metric: "Galaxy ecosystem · production",
-    image: "/team-collab.jpg",
+    image: "/motionPhoto.png",
   },
   {
     id: "vbee-data-platform",
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "Node.js", "MongoDB", "Material UI", "Tailwind", "SQL Server"],
     member: "quangquan",
-    image: "/about-coding.jpg",
+    image: "/Vbee.png",
   },
   {
     id: "construction-platform",
@@ -147,6 +147,6 @@ export const projects: Project[] = [
     ],
     stack: ["PaddleOCR", "TrOCR", "LayoutLMv3", "NER", "Python"],
     member: "vuvietanh",
-    image: "/about-coding.jpg",
+    image: "/ocr_fpt.png",
   },
 ];
